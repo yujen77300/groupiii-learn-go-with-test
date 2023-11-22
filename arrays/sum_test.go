@@ -44,20 +44,17 @@ func TestSumAll(t *testing.T) {
 
 func TestSumAllTails(t *testing.T) {
 
-	checkSum := func(t *testing.T, got, want []int){
+	checkSum := func(t *testing.T, got, want []int) {
 		if !reflect.DeepEqual(got, want) {
 			t.Errorf("got %v want %v", got, want)
 		}
 	}
 
-
-
-
 	t.Run("make the sums of some slices", func(t *testing.T) {
 		got := SumAllTails([]int{1, 2}, []int{0, 9})
 		want := []int{2, 9}
 
-		checkSum(t,got,want)
+		checkSum(t, got, want)
 
 	})
 
@@ -65,6 +62,38 @@ func TestSumAllTails(t *testing.T) {
 		got := SumAllTails([]int{}, []int{3, 4, 5})
 		want := []int{0, 9}
 
-		checkSum(t,got,want)
+		checkSum(t, got, want)
+	})
+}
+
+func TestCompareSlices(t *testing.T) {
+	var slice1, slice2 []int
+	t.Run("Compare two nil slcies", func(t *testing.T) {
+		got := compareSlices(slice1, slice2)
+		want := true
+
+		if got != want {
+			t.Errorf("got %v want %v", got, want)
+		}
+	})
+
+	slice1 = []int{1, 2, 3}
+	t.Run("Compare nil slice and slice", func(t *testing.T) {
+		got := compareSlices(slice1, slice2)
+		want := true
+
+		if got != want {
+			t.Errorf("got %v want %v", got, want)
+		}
+	})
+
+	slice2 = []int{1, 2, 3}
+	t.Run("Compare two slices", func(t *testing.T) {
+		got := compareSlices(slice1, slice2)
+		want := false
+
+		if got != want {
+			t.Errorf("got %v want %v", got, want)
+		}
 	})
 }

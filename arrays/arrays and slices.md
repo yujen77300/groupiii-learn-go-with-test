@@ -1,5 +1,15 @@
 # [Arrays and slices](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/arrays-and-slices)
 
+array也可以用索引賦值
+```golang
+var (
+	arr = [10]int{1, 9: 10, 4: 5}
+)
+
+func main() {
+	fmt.Println(arr)  // [1 0 0 0 5 0 0 0 0 10]
+}
+```
 
 
 使用t.Run優點
@@ -35,7 +45,6 @@ func TestSumAll(t *testing.T) {
 
 }
 ```
-
 
 
 `go test -cover` => 用來了解測試的覆蓋率，作者提到如果遵循TDD，覆蓋論會接近100%

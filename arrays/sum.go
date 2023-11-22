@@ -39,3 +39,15 @@ func SumAllTails(numbersToSum ...[]int) []int {
 
 	return sums
 }
+
+func compareSlices(slice1, slice2 []int)bool {
+    if slice1 == nil && slice2 == nil {
+        return true
+    } else if slice1 == nil {
+        return true
+    } else if slice2 == nil {
+        return true
+    } else {
+        return false
+    }
+}
